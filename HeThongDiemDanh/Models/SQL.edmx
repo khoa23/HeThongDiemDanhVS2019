@@ -1,0 +1,921 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseDDSVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CHITIETQUYENNGUOIDUNG">
+          <Key>
+            <PropertyRef Name="IDNGUOIDUNG" />
+            <PropertyRef Name="IDQUYENNGUOIDUNG" />
+          </Key>
+          <Property Name="IDNGUOIDUNG" Type="int" Nullable="false" />
+          <Property Name="IDQUYENNGUOIDUNG" Type="int" Nullable="false" />
+          <Property Name="TRANGTHAI" Type="bit" />
+        </EntityType>
+        <EntityType Name="DANHSACHLOP">
+          <Key>
+            <PropertyRef Name="IDLOPMH" />
+            <PropertyRef Name="IDNGUOIDUNG" />
+          </Key>
+          <Property Name="IDLOPMH" Type="int" Nullable="false" />
+          <Property Name="IDNGUOIDUNG" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DIEMDANHSV">
+          <Key>
+            <PropertyRef Name="IDDDSV" />
+            <PropertyRef Name="IDLICHHOC" />
+            <PropertyRef Name="IDLOPMH" />
+            <PropertyRef Name="IDNGUOIDUNG" />
+          </Key>
+          <Property Name="IDDDSV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="THOIGIANDDSV" Type="datetime" Nullable="false" />
+          <Property Name="GHICHU" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDLICHHOC" Type="int" Nullable="false" />
+          <Property Name="IDLOPMH" Type="int" Nullable="false" />
+          <Property Name="IDNGUOIDUNG" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HOCKY">
+          <Key>
+            <PropertyRef Name="IDHOCKY" />
+          </Key>
+          <Property Name="IDHOCKY" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAHOCKY" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="TENHOCKY" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IDNAMHOC" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LICHHOC">
+          <Key>
+            <PropertyRef Name="IDLICHHOC" />
+            <PropertyRef Name="IDLOPMH" />
+            <PropertyRef Name="IDNGUOIDUNG" />
+          </Key>
+          <Property Name="IDLICHHOC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="THOIGIANDIEMDANH" Type="datetime" Nullable="false" />
+          <Property Name="TUANHOC" Type="int" Nullable="false" />
+          <Property Name="MAQR" Type="text" Nullable="false" />
+          <Property Name="IDLOPMH" Type="int" Nullable="false" />
+          <Property Name="IDNGUOIDUNG" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOPMONHOC">
+          <Key>
+            <PropertyRef Name="IDLOPMH" />
+          </Key>
+          <Property Name="IDLOPMH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MALOPMH" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="TENLOPMH" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NHOMMONHOC" Type="int" Nullable="false" />
+          <Property Name="TOTHUCHANH" Type="bit" Nullable="false" />
+          <Property Name="THU" Type="ntext" Nullable="false" />
+          <Property Name="SOTIET" Type="int" />
+          <Property Name="TIETBATDAU" Type="int" />
+          <Property Name="NGAYBATDAU" Type="datetime" Nullable="false" />
+          <Property Name="NGAYKETTHUC" Type="datetime" Nullable="false" />
+          <Property Name="PHONGHOC" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IDMONHOC" Type="int" Nullable="false" />
+          <Property Name="IDHOCKY" Type="int" Nullable="false" />
+          <Property Name="IDGIANGVIEN" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOPSINHVIEN">
+          <Key>
+            <PropertyRef Name="IDLOPSINHVIEN" />
+          </Key>
+          <Property Name="IDLOPSINHVIEN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MALOPSV" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="TENLOPSV" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MONHOC">
+          <Key>
+            <PropertyRef Name="IDMONHOC" />
+          </Key>
+          <Property Name="IDMONHOC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAMONHOC" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="TENMONHOC" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SOBUOI" Type="int" />
+          <Property Name="SOTINCHI" Type="float" />
+        </EntityType>
+        <EntityType Name="NAMHOC">
+          <Key>
+            <PropertyRef Name="IDNAMHOC" />
+          </Key>
+          <Property Name="IDNAMHOC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MANAMHOC" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="TENNAMHOC" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NGUOIDUNG">
+          <Key>
+            <PropertyRef Name="IDNGUOIDUNG" />
+          </Key>
+          <Property Name="IDNGUOIDUNG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPHANQUYEN" Type="int" Nullable="false" />
+          <Property Name="MASONGUOIDUNG" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="TENNGUOIDUNG" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="NGAYSINH" Type="datetime" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
+          <Property Name="SODIENTHOAI" Type="varchar" MaxLength="10" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDLOPSINHVIEN" Type="int" />
+          <Property Name="TENDANGNHAP" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="MATKHAU" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ResetPasswordCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsEmailVerified" Type="bit" />
+          <Property Name="ActivationCode" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="PHANQUYEN">
+          <Key>
+            <PropertyRef Name="IDPHANQUYEN" />
+          </Key>
+          <Property Name="IDPHANQUYEN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENQUYEN" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QUYENNGUOIDUNG">
+          <Key>
+            <PropertyRef Name="IDQUYENNGUOIDUNG" />
+          </Key>
+          <Property Name="IDQUYENNGUOIDUNG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOIDUNGQUYEN" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__CHITIETQU__IDNGU__286302EC">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+          <End Role="CHITIETQUYENNGUOIDUNG" Type="Self.CHITIETQUYENNGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="CHITIETQUYENNGUOIDUNG">
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHITIETQU__IDQUY__300424B4">
+          <End Role="QUYENNGUOIDUNG" Type="Self.QUYENNGUOIDUNG" Multiplicity="1" />
+          <End Role="CHITIETQUYENNGUOIDUNG" Type="Self.CHITIETQUYENNGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUYENNGUOIDUNG">
+              <PropertyRef Name="IDQUYENNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="CHITIETQUYENNGUOIDUNG">
+              <PropertyRef Name="IDQUYENNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DANHSACHL__IDLOP__2C3393D0">
+          <End Role="LOPMONHOC" Type="Self.LOPMONHOC" Multiplicity="1" />
+          <End Role="DANHSACHLOP" Type="Self.DANHSACHLOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOPMONHOC">
+              <PropertyRef Name="IDLOPMH" />
+            </Principal>
+            <Dependent Role="DANHSACHLOP">
+              <PropertyRef Name="IDLOPMH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DANHSACHL__IDNGU__267ABA7A">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+          <End Role="DANHSACHLOP" Type="Self.DANHSACHLOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="DANHSACHLOP">
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIEMDANHSV__2F10007B">
+          <End Role="LICHHOC" Type="Self.LICHHOC" Multiplicity="1" />
+          <End Role="DIEMDANHSV" Type="Self.DIEMDANHSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LICHHOC">
+              <PropertyRef Name="IDLICHHOC" />
+              <PropertyRef Name="IDLOPMH" />
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="DIEMDANHSV">
+              <PropertyRef Name="IDLICHHOC" />
+              <PropertyRef Name="IDLOPMH" />
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOCKY__IDNAMHOC__2A4B4B5E">
+          <End Role="NAMHOC" Type="Self.NAMHOC" Multiplicity="1" />
+          <End Role="HOCKY" Type="Self.HOCKY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NAMHOC">
+              <PropertyRef Name="IDNAMHOC" />
+            </Principal>
+            <Dependent Role="HOCKY">
+              <PropertyRef Name="IDNAMHOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LICHHOC__2D27B809">
+          <End Role="DANHSACHLOP" Type="Self.DANHSACHLOP" Multiplicity="1" />
+          <End Role="LICHHOC" Type="Self.LICHHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DANHSACHLOP">
+              <PropertyRef Name="IDLOPMH" />
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="LICHHOC">
+              <PropertyRef Name="IDLOPMH" />
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOPMONHOC__IDGIA__276EDEB3">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+          <End Role="LOPMONHOC" Type="Self.LOPMONHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="LOPMONHOC">
+              <PropertyRef Name="IDGIANGVIEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOPMONHOC__IDHOC__2B3F6F97">
+          <End Role="HOCKY" Type="Self.HOCKY" Multiplicity="1" />
+          <End Role="LOPMONHOC" Type="Self.LOPMONHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOCKY">
+              <PropertyRef Name="IDHOCKY" />
+            </Principal>
+            <Dependent Role="LOPMONHOC">
+              <PropertyRef Name="IDHOCKY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOPMONHOC__IDMON__25869641">
+          <End Role="MONHOC" Type="Self.MONHOC" Multiplicity="1" />
+          <End Role="LOPMONHOC" Type="Self.LOPMONHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONHOC">
+              <PropertyRef Name="IDMONHOC" />
+            </Principal>
+            <Dependent Role="LOPMONHOC">
+              <PropertyRef Name="IDMONHOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGUOIDUNG__IDLOP__29572725">
+          <End Role="LOPSINHVIEN" Type="Self.LOPSINHVIEN" Multiplicity="0..1" />
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOPSINHVIEN">
+              <PropertyRef Name="IDLOPSINHVIEN" />
+            </Principal>
+            <Dependent Role="NGUOIDUNG">
+              <PropertyRef Name="IDLOPSINHVIEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGUOIDUNG__IDPHA__2E1BDC42">
+          <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="1" />
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHANQUYEN">
+              <PropertyRef Name="IDPHANQUYEN" />
+            </Principal>
+            <Dependent Role="NGUOIDUNG">
+              <PropertyRef Name="IDPHANQUYEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseDDSVModelStoreContainer">
+          <EntitySet Name="CHITIETQUYENNGUOIDUNG" EntityType="Self.CHITIETQUYENNGUOIDUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DANHSACHLOP" EntityType="Self.DANHSACHLOP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DIEMDANHSV" EntityType="Self.DIEMDANHSV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOCKY" EntityType="Self.HOCKY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LICHHOC" EntityType="Self.LICHHOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOPMONHOC" EntityType="Self.LOPMONHOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOPSINHVIEN" EntityType="Self.LOPSINHVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MONHOC" EntityType="Self.MONHOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NAMHOC" EntityType="Self.NAMHOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGUOIDUNG" EntityType="Self.NGUOIDUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUYENNGUOIDUNG" EntityType="Self.QUYENNGUOIDUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CHITIETQU__IDNGU__286302EC" Association="Self.FK__CHITIETQU__IDNGU__286302EC">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+            <End Role="CHITIETQUYENNGUOIDUNG" EntitySet="CHITIETQUYENNGUOIDUNG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHITIETQU__IDQUY__300424B4" Association="Self.FK__CHITIETQU__IDQUY__300424B4">
+            <End Role="QUYENNGUOIDUNG" EntitySet="QUYENNGUOIDUNG" />
+            <End Role="CHITIETQUYENNGUOIDUNG" EntitySet="CHITIETQUYENNGUOIDUNG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DANHSACHL__IDLOP__2C3393D0" Association="Self.FK__DANHSACHL__IDLOP__2C3393D0">
+            <End Role="LOPMONHOC" EntitySet="LOPMONHOC" />
+            <End Role="DANHSACHLOP" EntitySet="DANHSACHLOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DANHSACHL__IDNGU__267ABA7A" Association="Self.FK__DANHSACHL__IDNGU__267ABA7A">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+            <End Role="DANHSACHLOP" EntitySet="DANHSACHLOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIEMDANHSV__2F10007B" Association="Self.FK__DIEMDANHSV__2F10007B">
+            <End Role="LICHHOC" EntitySet="LICHHOC" />
+            <End Role="DIEMDANHSV" EntitySet="DIEMDANHSV" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOCKY__IDNAMHOC__2A4B4B5E" Association="Self.FK__HOCKY__IDNAMHOC__2A4B4B5E">
+            <End Role="NAMHOC" EntitySet="NAMHOC" />
+            <End Role="HOCKY" EntitySet="HOCKY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LICHHOC__2D27B809" Association="Self.FK__LICHHOC__2D27B809">
+            <End Role="DANHSACHLOP" EntitySet="DANHSACHLOP" />
+            <End Role="LICHHOC" EntitySet="LICHHOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOPMONHOC__IDGIA__276EDEB3" Association="Self.FK__LOPMONHOC__IDGIA__276EDEB3">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+            <End Role="LOPMONHOC" EntitySet="LOPMONHOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOPMONHOC__IDHOC__2B3F6F97" Association="Self.FK__LOPMONHOC__IDHOC__2B3F6F97">
+            <End Role="HOCKY" EntitySet="HOCKY" />
+            <End Role="LOPMONHOC" EntitySet="LOPMONHOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOPMONHOC__IDMON__25869641" Association="Self.FK__LOPMONHOC__IDMON__25869641">
+            <End Role="MONHOC" EntitySet="MONHOC" />
+            <End Role="LOPMONHOC" EntitySet="LOPMONHOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGUOIDUNG__IDLOP__29572725" Association="Self.FK__NGUOIDUNG__IDLOP__29572725">
+            <End Role="LOPSINHVIEN" EntitySet="LOPSINHVIEN" />
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGUOIDUNG__IDPHA__2E1BDC42" Association="Self.FK__NGUOIDUNG__IDPHA__2E1BDC42">
+            <End Role="PHANQUYEN" EntitySet="PHANQUYEN" />
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseDDSVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CHITIETQUYENNGUOIDUNG">
+          <Key>
+            <PropertyRef Name="IDNGUOIDUNG" />
+            <PropertyRef Name="IDQUYENNGUOIDUNG" />
+          </Key>
+          <Property Name="IDNGUOIDUNG" Type="Int32" Nullable="false" />
+          <Property Name="IDQUYENNGUOIDUNG" Type="Int32" Nullable="false" />
+          <Property Name="TRANGTHAI" Type="Boolean" />
+          <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK__CHITIETQU__IDNGU__286302EC" FromRole="CHITIETQUYENNGUOIDUNG" ToRole="NGUOIDUNG" />
+          <NavigationProperty Name="QUYENNGUOIDUNG" Relationship="Self.FK__CHITIETQU__IDQUY__300424B4" FromRole="CHITIETQUYENNGUOIDUNG" ToRole="QUYENNGUOIDUNG" />
+        </EntityType>
+        <EntityType Name="DANHSACHLOP">
+          <Key>
+            <PropertyRef Name="IDLOPMH" />
+            <PropertyRef Name="IDNGUOIDUNG" />
+          </Key>
+          <Property Name="IDLOPMH" Type="Int32" Nullable="false" />
+          <Property Name="IDNGUOIDUNG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LOPMONHOC" Relationship="Self.FK__DANHSACHL__IDLOP__2C3393D0" FromRole="DANHSACHLOP" ToRole="LOPMONHOC" />
+          <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK__DANHSACHL__IDNGU__267ABA7A" FromRole="DANHSACHLOP" ToRole="NGUOIDUNG" />
+          <NavigationProperty Name="LICHHOCs" Relationship="Self.FK__LICHHOC__2D27B809" FromRole="DANHSACHLOP" ToRole="LICHHOC" />
+        </EntityType>
+        <EntityType Name="DIEMDANHSV">
+          <Key>
+            <PropertyRef Name="IDDDSV" />
+            <PropertyRef Name="IDLICHHOC" />
+            <PropertyRef Name="IDLOPMH" />
+            <PropertyRef Name="IDNGUOIDUNG" />
+          </Key>
+          <Property Name="IDDDSV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="THOIGIANDDSV" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GHICHU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IDLICHHOC" Type="Int32" Nullable="false" />
+          <Property Name="IDLOPMH" Type="Int32" Nullable="false" />
+          <Property Name="IDNGUOIDUNG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LICHHOC" Relationship="Self.FK__DIEMDANHSV__2F10007B" FromRole="DIEMDANHSV" ToRole="LICHHOC" />
+        </EntityType>
+        <EntityType Name="HOCKY">
+          <Key>
+            <PropertyRef Name="IDHOCKY" />
+          </Key>
+          <Property Name="IDHOCKY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAHOCKY" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENHOCKY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDNAMHOC" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NAMHOC" Relationship="Self.FK__HOCKY__IDNAMHOC__2A4B4B5E" FromRole="HOCKY" ToRole="NAMHOC" />
+          <NavigationProperty Name="LOPMONHOCs" Relationship="Self.FK__LOPMONHOC__IDHOC__2B3F6F97" FromRole="HOCKY" ToRole="LOPMONHOC" />
+        </EntityType>
+        <EntityType Name="LICHHOC">
+          <Key>
+            <PropertyRef Name="IDLICHHOC" />
+            <PropertyRef Name="IDLOPMH" />
+            <PropertyRef Name="IDNGUOIDUNG" />
+          </Key>
+          <Property Name="IDLICHHOC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="THOIGIANDIEMDANH" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TUANHOC" Type="Int32" Nullable="false" />
+          <Property Name="MAQR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDLOPMH" Type="Int32" Nullable="false" />
+          <Property Name="IDNGUOIDUNG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DANHSACHLOP" Relationship="Self.FK__LICHHOC__2D27B809" FromRole="LICHHOC" ToRole="DANHSACHLOP" />
+          <NavigationProperty Name="DIEMDANHSVs" Relationship="Self.FK__DIEMDANHSV__2F10007B" FromRole="LICHHOC" ToRole="DIEMDANHSV" />
+        </EntityType>
+        <EntityType Name="LOPMONHOC">
+          <Key>
+            <PropertyRef Name="IDLOPMH" />
+          </Key>
+          <Property Name="IDLOPMH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MALOPMH" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TENLOPMH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NHOMMONHOC" Type="Int32" Nullable="false" />
+          <Property Name="TOTHUCHANH" Type="Boolean" Nullable="false" />
+          <Property Name="THU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SOTIET" Type="Int32" />
+          <Property Name="TIETBATDAU" Type="Int32" />
+          <Property Name="NGAYBATDAU" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NGAYKETTHUC" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PHONGHOC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDMONHOC" Type="Int32" Nullable="false" />
+          <Property Name="IDHOCKY" Type="Int32" Nullable="false" />
+          <Property Name="IDGIANGVIEN" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DANHSACHLOPs" Relationship="Self.FK__DANHSACHL__IDLOP__2C3393D0" FromRole="LOPMONHOC" ToRole="DANHSACHLOP" />
+          <NavigationProperty Name="HOCKY" Relationship="Self.FK__LOPMONHOC__IDHOC__2B3F6F97" FromRole="LOPMONHOC" ToRole="HOCKY" />
+          <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK__LOPMONHOC__IDGIA__276EDEB3" FromRole="LOPMONHOC" ToRole="NGUOIDUNG" />
+          <NavigationProperty Name="MONHOC" Relationship="Self.FK__LOPMONHOC__IDMON__25869641" FromRole="LOPMONHOC" ToRole="MONHOC" />
+        </EntityType>
+        <EntityType Name="LOPSINHVIEN">
+          <Key>
+            <PropertyRef Name="IDLOPSINHVIEN" />
+          </Key>
+          <Property Name="IDLOPSINHVIEN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MALOPSV" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TENLOPSV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.FK__NGUOIDUNG__IDLOP__29572725" FromRole="LOPSINHVIEN" ToRole="NGUOIDUNG" />
+        </EntityType>
+        <EntityType Name="MONHOC">
+          <Key>
+            <PropertyRef Name="IDMONHOC" />
+          </Key>
+          <Property Name="IDMONHOC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAMONHOC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENMONHOC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SOBUOI" Type="Int32" />
+          <Property Name="SOTINCHI" Type="Double" />
+          <NavigationProperty Name="LOPMONHOCs" Relationship="Self.FK__LOPMONHOC__IDMON__25869641" FromRole="MONHOC" ToRole="LOPMONHOC" />
+        </EntityType>
+        <EntityType Name="NAMHOC">
+          <Key>
+            <PropertyRef Name="IDNAMHOC" />
+          </Key>
+          <Property Name="IDNAMHOC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MANAMHOC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENNAMHOC" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="HOCKies" Relationship="Self.FK__HOCKY__IDNAMHOC__2A4B4B5E" FromRole="NAMHOC" ToRole="HOCKY" />
+        </EntityType>
+        <EntityType Name="NGUOIDUNG">
+          <Key>
+            <PropertyRef Name="IDNGUOIDUNG" />
+          </Key>
+          <Property Name="IDNGUOIDUNG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPHANQUYEN" Type="Int32" Nullable="false" />
+          <Property Name="MASONGUOIDUNG" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENNGUOIDUNG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NGAYSINH" Type="DateTime" Precision="3" />
+          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SODIENTHOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IDLOPSINHVIEN" Type="Int32" />
+          <Property Name="TENDANGNHAP" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MATKHAU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResetPasswordCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsEmailVerified" Type="Boolean" />
+          <Property Name="ActivationCode" Type="Guid" />
+          <NavigationProperty Name="CHITIETQUYENNGUOIDUNGs" Relationship="Self.FK__CHITIETQU__IDNGU__286302EC" FromRole="NGUOIDUNG" ToRole="CHITIETQUYENNGUOIDUNG" />
+          <NavigationProperty Name="DANHSACHLOPs" Relationship="Self.FK__DANHSACHL__IDNGU__267ABA7A" FromRole="NGUOIDUNG" ToRole="DANHSACHLOP" />
+          <NavigationProperty Name="LOPMONHOCs" Relationship="Self.FK__LOPMONHOC__IDGIA__276EDEB3" FromRole="NGUOIDUNG" ToRole="LOPMONHOC" />
+          <NavigationProperty Name="LOPSINHVIEN" Relationship="Self.FK__NGUOIDUNG__IDLOP__29572725" FromRole="NGUOIDUNG" ToRole="LOPSINHVIEN" />
+          <NavigationProperty Name="PHANQUYEN" Relationship="Self.FK__NGUOIDUNG__IDPHA__2E1BDC42" FromRole="NGUOIDUNG" ToRole="PHANQUYEN" />
+        </EntityType>
+        <EntityType Name="PHANQUYEN">
+          <Key>
+            <PropertyRef Name="IDPHANQUYEN" />
+          </Key>
+          <Property Name="IDPHANQUYEN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENQUYEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.FK__NGUOIDUNG__IDPHA__2E1BDC42" FromRole="PHANQUYEN" ToRole="NGUOIDUNG" />
+        </EntityType>
+        <EntityType Name="QUYENNGUOIDUNG">
+          <Key>
+            <PropertyRef Name="IDQUYENNGUOIDUNG" />
+          </Key>
+          <Property Name="IDQUYENNGUOIDUNG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOIDUNGQUYEN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHITIETQUYENNGUOIDUNGs" Relationship="Self.FK__CHITIETQU__IDQUY__300424B4" FromRole="QUYENNGUOIDUNG" ToRole="CHITIETQUYENNGUOIDUNG" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__CHITIETQU__IDNGU__286302EC">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+          <End Role="CHITIETQUYENNGUOIDUNG" Type="Self.CHITIETQUYENNGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="CHITIETQUYENNGUOIDUNG">
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHITIETQU__IDQUY__300424B4">
+          <End Role="QUYENNGUOIDUNG" Type="Self.QUYENNGUOIDUNG" Multiplicity="1" />
+          <End Role="CHITIETQUYENNGUOIDUNG" Type="Self.CHITIETQUYENNGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUYENNGUOIDUNG">
+              <PropertyRef Name="IDQUYENNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="CHITIETQUYENNGUOIDUNG">
+              <PropertyRef Name="IDQUYENNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DANHSACHL__IDLOP__2C3393D0">
+          <End Role="LOPMONHOC" Type="Self.LOPMONHOC" Multiplicity="1" />
+          <End Role="DANHSACHLOP" Type="Self.DANHSACHLOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOPMONHOC">
+              <PropertyRef Name="IDLOPMH" />
+            </Principal>
+            <Dependent Role="DANHSACHLOP">
+              <PropertyRef Name="IDLOPMH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DANHSACHL__IDNGU__267ABA7A">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+          <End Role="DANHSACHLOP" Type="Self.DANHSACHLOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="DANHSACHLOP">
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LICHHOC__2D27B809">
+          <End Role="DANHSACHLOP" Type="Self.DANHSACHLOP" Multiplicity="1" />
+          <End Role="LICHHOC" Type="Self.LICHHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DANHSACHLOP">
+              <PropertyRef Name="IDLOPMH" />
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="LICHHOC">
+              <PropertyRef Name="IDLOPMH" />
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIEMDANHSV__2F10007B">
+          <End Role="LICHHOC" Type="Self.LICHHOC" Multiplicity="1" />
+          <End Role="DIEMDANHSV" Type="Self.DIEMDANHSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LICHHOC">
+              <PropertyRef Name="IDLICHHOC" />
+              <PropertyRef Name="IDLOPMH" />
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="DIEMDANHSV">
+              <PropertyRef Name="IDLICHHOC" />
+              <PropertyRef Name="IDLOPMH" />
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOCKY__IDNAMHOC__2A4B4B5E">
+          <End Role="NAMHOC" Type="Self.NAMHOC" Multiplicity="1" />
+          <End Role="HOCKY" Type="Self.HOCKY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NAMHOC">
+              <PropertyRef Name="IDNAMHOC" />
+            </Principal>
+            <Dependent Role="HOCKY">
+              <PropertyRef Name="IDNAMHOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOPMONHOC__IDHOC__2B3F6F97">
+          <End Role="HOCKY" Type="Self.HOCKY" Multiplicity="1" />
+          <End Role="LOPMONHOC" Type="Self.LOPMONHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOCKY">
+              <PropertyRef Name="IDHOCKY" />
+            </Principal>
+            <Dependent Role="LOPMONHOC">
+              <PropertyRef Name="IDHOCKY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOPMONHOC__IDGIA__276EDEB3">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+          <End Role="LOPMONHOC" Type="Self.LOPMONHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="LOPMONHOC">
+              <PropertyRef Name="IDGIANGVIEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOPMONHOC__IDMON__25869641">
+          <End Role="MONHOC" Type="Self.MONHOC" Multiplicity="1" />
+          <End Role="LOPMONHOC" Type="Self.LOPMONHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONHOC">
+              <PropertyRef Name="IDMONHOC" />
+            </Principal>
+            <Dependent Role="LOPMONHOC">
+              <PropertyRef Name="IDMONHOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGUOIDUNG__IDLOP__29572725">
+          <End Role="LOPSINHVIEN" Type="Self.LOPSINHVIEN" Multiplicity="0..1" />
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOPSINHVIEN">
+              <PropertyRef Name="IDLOPSINHVIEN" />
+            </Principal>
+            <Dependent Role="NGUOIDUNG">
+              <PropertyRef Name="IDLOPSINHVIEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGUOIDUNG__IDPHA__2E1BDC42">
+          <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="1" />
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHANQUYEN">
+              <PropertyRef Name="IDPHANQUYEN" />
+            </Principal>
+            <Dependent Role="NGUOIDUNG">
+              <PropertyRef Name="IDPHANQUYEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseDDSVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHITIETQUYENNGUOIDUNGs" EntityType="Self.CHITIETQUYENNGUOIDUNG" />
+          <EntitySet Name="DANHSACHLOPs" EntityType="Self.DANHSACHLOP" />
+          <EntitySet Name="DIEMDANHSVs" EntityType="Self.DIEMDANHSV" />
+          <EntitySet Name="HOCKies" EntityType="Self.HOCKY" />
+          <EntitySet Name="LICHHOCs" EntityType="Self.LICHHOC" />
+          <EntitySet Name="LOPMONHOCs" EntityType="Self.LOPMONHOC" />
+          <EntitySet Name="LOPSINHVIENs" EntityType="Self.LOPSINHVIEN" />
+          <EntitySet Name="MONHOCs" EntityType="Self.MONHOC" />
+          <EntitySet Name="NAMHOCs" EntityType="Self.NAMHOC" />
+          <EntitySet Name="NGUOIDUNGs" EntityType="Self.NGUOIDUNG" />
+          <EntitySet Name="PHANQUYENs" EntityType="Self.PHANQUYEN" />
+          <EntitySet Name="QUYENNGUOIDUNGs" EntityType="Self.QUYENNGUOIDUNG" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK__CHITIETQU__IDNGU__286302EC" Association="Self.FK__CHITIETQU__IDNGU__286302EC">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+            <End Role="CHITIETQUYENNGUOIDUNG" EntitySet="CHITIETQUYENNGUOIDUNGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHITIETQU__IDQUY__300424B4" Association="Self.FK__CHITIETQU__IDQUY__300424B4">
+            <End Role="QUYENNGUOIDUNG" EntitySet="QUYENNGUOIDUNGs" />
+            <End Role="CHITIETQUYENNGUOIDUNG" EntitySet="CHITIETQUYENNGUOIDUNGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DANHSACHL__IDLOP__2C3393D0" Association="Self.FK__DANHSACHL__IDLOP__2C3393D0">
+            <End Role="LOPMONHOC" EntitySet="LOPMONHOCs" />
+            <End Role="DANHSACHLOP" EntitySet="DANHSACHLOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DANHSACHL__IDNGU__267ABA7A" Association="Self.FK__DANHSACHL__IDNGU__267ABA7A">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+            <End Role="DANHSACHLOP" EntitySet="DANHSACHLOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LICHHOC__2D27B809" Association="Self.FK__LICHHOC__2D27B809">
+            <End Role="DANHSACHLOP" EntitySet="DANHSACHLOPs" />
+            <End Role="LICHHOC" EntitySet="LICHHOCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIEMDANHSV__2F10007B" Association="Self.FK__DIEMDANHSV__2F10007B">
+            <End Role="LICHHOC" EntitySet="LICHHOCs" />
+            <End Role="DIEMDANHSV" EntitySet="DIEMDANHSVs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOCKY__IDNAMHOC__2A4B4B5E" Association="Self.FK__HOCKY__IDNAMHOC__2A4B4B5E">
+            <End Role="NAMHOC" EntitySet="NAMHOCs" />
+            <End Role="HOCKY" EntitySet="HOCKies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOPMONHOC__IDHOC__2B3F6F97" Association="Self.FK__LOPMONHOC__IDHOC__2B3F6F97">
+            <End Role="HOCKY" EntitySet="HOCKies" />
+            <End Role="LOPMONHOC" EntitySet="LOPMONHOCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOPMONHOC__IDGIA__276EDEB3" Association="Self.FK__LOPMONHOC__IDGIA__276EDEB3">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+            <End Role="LOPMONHOC" EntitySet="LOPMONHOCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOPMONHOC__IDMON__25869641" Association="Self.FK__LOPMONHOC__IDMON__25869641">
+            <End Role="MONHOC" EntitySet="MONHOCs" />
+            <End Role="LOPMONHOC" EntitySet="LOPMONHOCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGUOIDUNG__IDLOP__29572725" Association="Self.FK__NGUOIDUNG__IDLOP__29572725">
+            <End Role="LOPSINHVIEN" EntitySet="LOPSINHVIENs" />
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGUOIDUNG__IDPHA__2E1BDC42" Association="Self.FK__NGUOIDUNG__IDPHA__2E1BDC42">
+            <End Role="PHANQUYEN" EntitySet="PHANQUYENs" />
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseDDSVModelStoreContainer" CdmEntityContainer="DatabaseDDSVEntities">
+          <EntitySetMapping Name="CHITIETQUYENNGUOIDUNGs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.CHITIETQUYENNGUOIDUNG">
+              <MappingFragment StoreEntitySet="CHITIETQUYENNGUOIDUNG">
+                <ScalarProperty Name="IDNGUOIDUNG" ColumnName="IDNGUOIDUNG" />
+                <ScalarProperty Name="IDQUYENNGUOIDUNG" ColumnName="IDQUYENNGUOIDUNG" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DANHSACHLOPs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.DANHSACHLOP">
+              <MappingFragment StoreEntitySet="DANHSACHLOP">
+                <ScalarProperty Name="IDLOPMH" ColumnName="IDLOPMH" />
+                <ScalarProperty Name="IDNGUOIDUNG" ColumnName="IDNGUOIDUNG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIEMDANHSVs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.DIEMDANHSV">
+              <MappingFragment StoreEntitySet="DIEMDANHSV">
+                <ScalarProperty Name="IDDDSV" ColumnName="IDDDSV" />
+                <ScalarProperty Name="THOIGIANDDSV" ColumnName="THOIGIANDDSV" />
+                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+                <ScalarProperty Name="IDLICHHOC" ColumnName="IDLICHHOC" />
+                <ScalarProperty Name="IDLOPMH" ColumnName="IDLOPMH" />
+                <ScalarProperty Name="IDNGUOIDUNG" ColumnName="IDNGUOIDUNG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOCKies">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.HOCKY">
+              <MappingFragment StoreEntitySet="HOCKY">
+                <ScalarProperty Name="IDHOCKY" ColumnName="IDHOCKY" />
+                <ScalarProperty Name="MAHOCKY" ColumnName="MAHOCKY" />
+                <ScalarProperty Name="TENHOCKY" ColumnName="TENHOCKY" />
+                <ScalarProperty Name="IDNAMHOC" ColumnName="IDNAMHOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LICHHOCs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.LICHHOC">
+              <MappingFragment StoreEntitySet="LICHHOC">
+                <ScalarProperty Name="IDLICHHOC" ColumnName="IDLICHHOC" />
+                <ScalarProperty Name="THOIGIANDIEMDANH" ColumnName="THOIGIANDIEMDANH" />
+                <ScalarProperty Name="TUANHOC" ColumnName="TUANHOC" />
+                <ScalarProperty Name="MAQR" ColumnName="MAQR" />
+                <ScalarProperty Name="IDLOPMH" ColumnName="IDLOPMH" />
+                <ScalarProperty Name="IDNGUOIDUNG" ColumnName="IDNGUOIDUNG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOPMONHOCs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.LOPMONHOC">
+              <MappingFragment StoreEntitySet="LOPMONHOC">
+                <ScalarProperty Name="IDLOPMH" ColumnName="IDLOPMH" />
+                <ScalarProperty Name="MALOPMH" ColumnName="MALOPMH" />
+                <ScalarProperty Name="TENLOPMH" ColumnName="TENLOPMH" />
+                <ScalarProperty Name="NHOMMONHOC" ColumnName="NHOMMONHOC" />
+                <ScalarProperty Name="TOTHUCHANH" ColumnName="TOTHUCHANH" />
+                <ScalarProperty Name="THU" ColumnName="THU" />
+                <ScalarProperty Name="SOTIET" ColumnName="SOTIET" />
+                <ScalarProperty Name="TIETBATDAU" ColumnName="TIETBATDAU" />
+                <ScalarProperty Name="NGAYBATDAU" ColumnName="NGAYBATDAU" />
+                <ScalarProperty Name="NGAYKETTHUC" ColumnName="NGAYKETTHUC" />
+                <ScalarProperty Name="PHONGHOC" ColumnName="PHONGHOC" />
+                <ScalarProperty Name="IDMONHOC" ColumnName="IDMONHOC" />
+                <ScalarProperty Name="IDHOCKY" ColumnName="IDHOCKY" />
+                <ScalarProperty Name="IDGIANGVIEN" ColumnName="IDGIANGVIEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOPSINHVIENs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.LOPSINHVIEN">
+              <MappingFragment StoreEntitySet="LOPSINHVIEN">
+                <ScalarProperty Name="IDLOPSINHVIEN" ColumnName="IDLOPSINHVIEN" />
+                <ScalarProperty Name="MALOPSV" ColumnName="MALOPSV" />
+                <ScalarProperty Name="TENLOPSV" ColumnName="TENLOPSV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MONHOCs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.MONHOC">
+              <MappingFragment StoreEntitySet="MONHOC">
+                <ScalarProperty Name="IDMONHOC" ColumnName="IDMONHOC" />
+                <ScalarProperty Name="MAMONHOC" ColumnName="MAMONHOC" />
+                <ScalarProperty Name="TENMONHOC" ColumnName="TENMONHOC" />
+                <ScalarProperty Name="SOBUOI" ColumnName="SOBUOI" />
+                <ScalarProperty Name="SOTINCHI" ColumnName="SOTINCHI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NAMHOCs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.NAMHOC">
+              <MappingFragment StoreEntitySet="NAMHOC">
+                <ScalarProperty Name="IDNAMHOC" ColumnName="IDNAMHOC" />
+                <ScalarProperty Name="MANAMHOC" ColumnName="MANAMHOC" />
+                <ScalarProperty Name="TENNAMHOC" ColumnName="TENNAMHOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGUOIDUNGs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.NGUOIDUNG">
+              <MappingFragment StoreEntitySet="NGUOIDUNG">
+                <ScalarProperty Name="IDNGUOIDUNG" ColumnName="IDNGUOIDUNG" />
+                <ScalarProperty Name="IDPHANQUYEN" ColumnName="IDPHANQUYEN" />
+                <ScalarProperty Name="MASONGUOIDUNG" ColumnName="MASONGUOIDUNG" />
+                <ScalarProperty Name="TENNGUOIDUNG" ColumnName="TENNGUOIDUNG" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SODIENTHOAI" ColumnName="SODIENTHOAI" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="IDLOPSINHVIEN" ColumnName="IDLOPSINHVIEN" />
+                <ScalarProperty Name="TENDANGNHAP" ColumnName="TENDANGNHAP" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHANQUYENs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.PHANQUYEN">
+              <MappingFragment StoreEntitySet="PHANQUYEN">
+                <ScalarProperty Name="IDPHANQUYEN" ColumnName="IDPHANQUYEN" />
+                <ScalarProperty Name="TENQUYEN" ColumnName="TENQUYEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUYENNGUOIDUNGs">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.QUYENNGUOIDUNG">
+              <MappingFragment StoreEntitySet="QUYENNGUOIDUNG">
+                <ScalarProperty Name="IDQUYENNGUOIDUNG" ColumnName="IDQUYENNGUOIDUNG" />
+                <ScalarProperty Name="NOIDUNGQUYEN" ColumnName="NOIDUNGQUYEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DatabaseDDSVModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

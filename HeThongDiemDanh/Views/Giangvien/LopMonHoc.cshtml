@@ -1,0 +1,48 @@
+﻿@model IEnumerable<HeThongDiemDanh.Models.LOPMONHOC>
+@{
+    ViewBag.Title = "LopMonHoc";
+    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+}
+
+<table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th>Mã lớp môn học</th>
+            <th>Tên lớp môn học</th>
+            <th>Nhóm môn học</th>
+            <th>Tổ thực hành</th>
+            <th>Thứ</th>
+            <th>Số tiết</th>
+            <th>Tiết bắt đầu</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+            <th>Phòng</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@Html.Raw(item.MALOPMH) </td>
+                <td>@Html.Raw(item.TENLOPMH) </td>
+                <td>@Html.Raw(item.NHOMMONHOC) </td>
+                <td>@Html.Raw(item.TOTHUCHANH) </td>
+                <td>@Html.Raw(item.THU) </td>
+                <td>@Html.Raw(item.SOTIET) </td>
+                <td>@Html.Raw(item.TIETBATDAU) </td>
+                <td>@Html.Raw(item.NGAYBATDAU) </td>
+                <td>@Html.Raw(item.NGAYKETTHUC) </td>
+                <td>@Html.Raw(item.PHONGHOC) </td>
+                <td>
+                    <input type="button" value="Điểm danh" onclick="location.href='/Giangvien/DiemDanh/LopMonHoc/QR/@item.IDLOPMH'">
+                </td>
+                <td>
+                    <input type="button" value="Danh sách" onclick="location.href='/Giangvien/DiemDanh/LopMonHoc/DanhSachLop/@item.IDLOPMH'">
+                </td>
+            </tr>
+        }
+            </tr>
+        </tbody>
+    </table>
+
