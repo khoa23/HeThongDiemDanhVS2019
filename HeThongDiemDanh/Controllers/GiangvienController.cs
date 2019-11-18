@@ -89,21 +89,38 @@ namespace HeThongDiemDanh.Controllers
 
             using (MemoryStream ms = new MemoryStream())
             {
-                int idmonhoc = Convert.ToInt32(Session["IDMONHOC"]);
+                //id user
+                int iduser = Convert.ToInt32(Session["IDNGUOIDUNG"]);
+                string idgiangvien = Convert.ToString(Session["IDNGUOIDUNG"]);
+
+                //ramdon
                 int Numrd;
                 string Numrd_str;
                 Random rd = new Random();
                 Numrd = rd.Next(10000000, 1000000000);//biến Numrd sẽ nhận có giá trị ngẫu nhiên
                 Numrd_str = rd.Next(10000000, 1000000000).ToString();//Chuyển giá trị ramdon về kiểu string
+
+                //ngay thang
                 DateTime dt = DateTime.Now;
                 string strDate = dt.ToString("dd/MM/yy,hh:mm");
+
+                //lay idlopmonhoc
                 string idlopmonhoc = Convert.ToString(id); //chuyển id ở trên qua string
 
 
                 //string dayqr = idmonhoc+'-'+Numrd_str+'-'+strDate;
-                string dayqr = idlopmonhoc+'-'+Numrd_str+'-'+strDate;
+                string dayqr = idgiangvien+'-'+idlopmonhoc+'-'+Numrd_str+'-'+strDate;
 
+                //linq              
+                LICHHOC lichhoc = new LICHHOC();
+                lichhoc.THOIGIANDIEMDANH = DateTime.Now;
+                lichhoc.MAQR = dayqr;
+                lichhoc.IDLOPMH = id.Value;
+                lichhoc.IDNGUOIDUNG = iduser;
+                db.LICHHOCs.Add(lichhoc);
+                db.SaveChangesAsync();
 
+                
 
                 QRCodeGenerator qrGenerator = new QRCodeGenerator();
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode(dayqr, QRCodeGenerator.ECCLevel.Q);
@@ -117,6 +134,6 @@ namespace HeThongDiemDanh.Controllers
             }
 
             return View();
-        }
+        }     
     }
 }

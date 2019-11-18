@@ -4344,6 +4344,7 @@
     <Content Include="Models\SQL.edmx.diagram">
       <DependentUpon>SQL.edmx</DependentUpon>
     </Content>
+    <Content Include=".editorconfig" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
