@@ -83,8 +83,8 @@ namespace HeThongDiemDanh.Controllers
             return View(list);
         }
 
-
-        public ActionResult QR(string qrcode)
+        [Authorize(Roles = "GIANGVIEN")]
+        public ActionResult QR(int? id)
         {
 
             using (MemoryStream ms = new MemoryStream())
@@ -93,13 +93,15 @@ namespace HeThongDiemDanh.Controllers
                 int Numrd;
                 string Numrd_str;
                 Random rd = new Random();
-                Numrd = rd.Next(10000000, 1000000000);//biến Numrd sẽ nhận có giá trị ngẫu nhiên trong khoảng 1 đến 100
+                Numrd = rd.Next(10000000, 1000000000);//biến Numrd sẽ nhận có giá trị ngẫu nhiên
                 Numrd_str = rd.Next(10000000, 1000000000).ToString();//Chuyển giá trị ramdon về kiểu string
                 DateTime dt = DateTime.Now;
-                string strDate = dt.ToString("dd/MM/yy");
+                string strDate = dt.ToString("dd/MM/yy,hh:mm");
+                string idlopmonhoc = Convert.ToString(id); //chuyển id ở trên qua string
+
 
                 //string dayqr = idmonhoc+'-'+Numrd_str+'-'+strDate;
-                string dayqr = "123"+'-'+Numrd_str+'-'+strDate;
+                string dayqr = idlopmonhoc+'-'+Numrd_str+'-'+strDate;
 
 
 
