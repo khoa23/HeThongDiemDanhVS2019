@@ -24,6 +24,16 @@ namespace HeThongDiemDanh.Controllers
             return View();
         }
 
+        public ActionResult NamHoc()
+        {
+            int id = Convert.ToInt32(Session["IDNGUOIDUNG"]);
+            var v = from t in db.NGUOIDUNGs
+                    where t.IDNGUOIDUNG == id
+                    select t;
+
+            return View();
+        }
+
         public ActionResult ThongTinGV()
         {
             int id = Convert.ToInt32(Session["IDNGUOIDUNG"]);
