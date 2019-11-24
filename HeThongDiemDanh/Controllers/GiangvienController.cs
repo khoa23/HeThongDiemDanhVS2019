@@ -69,8 +69,6 @@ namespace HeThongDiemDanh.Controllers
 
         }
 
-
-
         public ActionResult LopMonHoc(int? id)
         {
             if (id == null)
