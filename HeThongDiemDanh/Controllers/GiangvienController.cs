@@ -26,12 +26,16 @@ namespace HeThongDiemDanh.Controllers
 
         public ActionResult NamHoc()
         {
-            int id = Convert.ToInt32(Session["IDNGUOIDUNG"]);
-            var v = from t in db.NGUOIDUNGs
-                    where t.IDNGUOIDUNG == id
-                    select t;
+            var list = from s in db.NAMHOCs select s;
+            return View(list);
+        }
 
-            return View();
+        public ActionResult HocKy(int? id)
+        {
+            var list = from h in db.HOCKies
+                       where id == h.IDNAMHOC
+                       select h;
+            return View(list);
         }
 
         public ActionResult ThongTinGV()
@@ -51,19 +55,21 @@ namespace HeThongDiemDanh.Controllers
                 return HttpNotFound();
             }
         }
-        public ActionResult DiemDanh()
+
+        public ActionResult MonHoc(int? id)
         {
-            int id = Convert.ToInt32(Session["IDNGUOIDUNG"]);
+            int idgv = Convert.ToInt32(Session["IDNGUOIDUNG"]);
             var list = from m in db.MONHOCs
                        join l in db.LOPMONHOCs
                        on m.IDMONHOC equals l.IDMONHOC
-                       where id == l.IDGIANGVIEN
+                       where idgv == l.IDGIANGVIEN
+                       orderby id == l.IDHOCKY
                        select m;
             return View(list);
-            
+
         }
 
-        
+
 
         public ActionResult LopMonHoc(int? id)
         {
@@ -72,8 +78,9 @@ namespace HeThongDiemDanh.Controllers
                 return HttpNotFound();
 
             }
-            int? idlopmonhoc = id;
-            var list = from s in db.LOPMONHOCs where s.IDMONHOC == id select s;
+            var list = from s in db.LOPMONHOCs
+                       where s.IDMONHOC == id
+                       select s;
             return View(list);
         }       
 
@@ -87,7 +94,6 @@ namespace HeThongDiemDanh.Controllers
             var list = from a in db.NGUOIDUNGs
                        join d in db.DANHSACHLOPs
                        on a.IDNGUOIDUNG equals d.IDNGUOIDUNG
-
                        where id == d.IDLOPMH
                        select a;
             return View(list);
@@ -145,5 +151,9 @@ namespace HeThongDiemDanh.Controllers
 
             return View();
         }     
+        public ActionResult test()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<HeThongDiemDanh.Models.HOCKY>
+@{
+    ViewBag.Title = "HocKy";
+    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+}
+
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Học kỳ</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td></td>
+                <td>
+                    <a href="/GiangVien/MonHoc-@item.IDHOCKY">
+                        <span>
+                            @Html.Raw(item.TENHOCKY)
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>STT</th>
+            <th>Năm học</th>
+        </tr>
+    </tfoot>
+</table>
+

@@ -4366,6 +4366,7 @@
     <Content Include="TeamplateMain\css\datepicker.css" />
     <Content Include="TeamplateMain\css\datepicker3.css" />
     <Content Include="TeamplateMain\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="TeamplateMain\css\jquery.dataTables.min.css" />
     <Content Include="TeamplateMain\css\responsive.bootstrap.min.css" />
     <Content Include="TeamplateMain\css\styles.css" />
     <Content Include="TeamplateMain\fonts\glyphicons-halflings-regular.svg" />
@@ -4426,11 +4427,13 @@
     <Content Include="TeamplateMain\tables\data2.json" />
     <Content Include="Views\Sinhvien\Thongtinsv.cshtml" />
     <Content Include="Views\Sinhvien\Test.cshtml" />
-    <Content Include="Views\Giangvien\DiemDanh.cshtml" />
     <Content Include="Views\Giangvien\ThongTinGV.cshtml" />
     <Content Include="Views\Giangvien\LopMonHoc.cshtml" />
     <Content Include="Views\Giangvien\DanhSachLop.cshtml" />
     <Content Include="Views\Giangvien\QR.cshtml" />
+    <Content Include="Views\Giangvien\NamHoc.cshtml" />
+    <Content Include="Views\Giangvien\HocKy.cshtml" />
+    <Content Include="Views\Giangvien\MonHoc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

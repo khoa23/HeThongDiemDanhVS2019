@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<HeThongDiemDanh.Models.MONHOC>
 @{
-    ViewBag.Title = "DiemDanh";
+    ViewBag.Title = "MonHoc";
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
 }
 
@@ -25,7 +25,7 @@
                 <td>@Html.Raw(item.SOBUOI) </td>
                 <td>@Html.Raw(item.SOTINCHI) </td>
                 <td>
-                    <input type="button" value="Chọn" onclick="location.href='/Giangvien/DiemDanh/LopMonHoc-@item.IDMONHOC'">
+                    <input type="button" value="Chọn" onclick="location.href='/Giangvien/LopMonHoc-@item.IDMONHOC'">
                 </td>
             </tr>
         }

@@ -14,20 +14,32 @@ namespace HeThongDiemDanh
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Hoc ky",
+                "Giangvien/HocKy-{id}",
+                new { controller = "Giangvien", action = "HocKy" }, new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
+                "Mon Hoc",
+                "Giangvien/MonHoc-{id}",
+                new { controller = "Giangvien", action = "MonHoc" }, new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
                 "Lop mon hoc",
-                "Giangvien/DiemDanh/LopMonHoc-{id}",
+                "Giangvien/LopMonHoc-{id}",
                 new { controller = "Giangvien", action = "LopMonHoc" }, new { id = @"\d+" }
             );
 
             routes.MapRoute(
                 "Danh sach sv trong lop",
-                "Giangvien/DiemDanh/LopMonHoc/DanhSachLop/{id}",
+                "Giangvien/DanhSachLop/{id}",
                 new { controller = "Giangvien", action = "DanhSachLop" }, new { id = @"\d+" }
             );
 
             routes.MapRoute(
                 "QR",
-                "Giangvien/DiemDanh/LopMonHoc/QR/{id}",
+                "Giangvien/QR/{id}",
                 new { controller = "Giangvien", action = "QR" }, new { id = @"\d+" }
             );
 
