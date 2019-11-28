@@ -38,6 +38,12 @@ namespace HeThongDiemDanh
             );
 
             routes.MapRoute(
+                "test Danh sach sv trong lop",
+                "Giangvien/test/{id}",
+                new { controller = "Giangvien", action = "test" }, new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
                 "QR",
                 "Giangvien/QR/{id}",
                 new { controller = "Giangvien", action = "QR" }, new { id = @"\d+" }

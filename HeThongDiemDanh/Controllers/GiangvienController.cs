@@ -148,10 +148,47 @@ namespace HeThongDiemDanh.Controllers
             }
 
             return View();
-        }     
-        public ActionResult test()
+        }
+
+        public ActionResult DanhSachDiemDanh(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return HttpNotFound();
+
+            }
+
+            //select n.MASONGUOIDUNG,TENNGUOIDUNG
+            //from NGUOIDUNG n, DANHSACHLOP d, DIEMDANHSV dd
+            //where n.IDNGUOIDUNG = dd.IDNGUOIDUNG and d.IDLOPMH = dd.IDLOPMH
+            //GROUP BY n.MASONGUOIDUNG,TENNGUOIDUNG
+
+            //var list = from n in db.NGUOIDUNGs
+            //           join d in db.DIEMDANHSVs
+            //           on n.IDNGUOIDUNG equals d.IDNGUOIDUNG
+            //           where id == d.IDLOPMH
+            //           select n;
+
+            var list = from a in db.NGUOIDUNGs
+                       join dd in db.DIEMDANHSVs
+                       on a.IDNGUOIDUNG equals dd.IDNGUOIDUNG
+                       where id == dd.IDLOPMH
+                       select a;
+            return View(list);
+        }
+        public ActionResult test(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+
+            }
+            var list = from n in db.NGUOIDUNGs
+                       join d in db.DIEMDANHSVs
+                       on n.IDNGUOIDUNG equals d.IDNGUOIDUNG
+                       where id == d.IDLOPMH
+                       select n;
+            return View(list);
         }
     }
 }

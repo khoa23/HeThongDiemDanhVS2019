@@ -4434,6 +4434,8 @@
     <Content Include="Views\Giangvien\NamHoc.cshtml" />
     <Content Include="Views\Giangvien\HocKy.cshtml" />
     <Content Include="Views\Giangvien\MonHoc.cshtml" />
+    <Content Include="Views\Giangvien\DanhSachDiemDanh.cshtml" />
+    <Content Include="Views\Giangvien\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<HeThongDiemDanh.Models.NGUOIDUNG>
+@{
+    ViewBag.Title = "DanhSachDiemDanh";
+    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+}
+
+<table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>MSSV</th>
+            <th>Họ tên</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td></td>
+                <td>@Html.Raw(item.MASONGUOIDUNG) </td>
+                <td>@Html.Raw(item.TENNGUOIDUNG) </td>
+                <td>
+                    <input id="Checkbox1" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                </td>
+                <td>
+                    <input id="Checkbox2" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                </td>
+                <td>
+                    <input id="Checkbox3" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                </td>
+                <td>
+                    <input id="Checkbox4" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                </td>
+                <td>
+                    <input id="Checkbox5" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                </td>
+                <td>
+                    <input id="Checkbox6" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                </td>
+                <td>
+                    <input id="Checkbox7" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                </td>
+                <td>
+                    <input id="Checkbox8" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
