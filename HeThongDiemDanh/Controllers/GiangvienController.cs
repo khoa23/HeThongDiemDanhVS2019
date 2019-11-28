@@ -180,9 +180,9 @@ namespace HeThongDiemDanh.Controllers
             //           select n;
 
             var list = from a in db.NGUOIDUNGs
-                       join dd in db.DIEMDANHSVs
-                       on a.IDNGUOIDUNG equals dd.IDNGUOIDUNG
-                       where id == dd.IDLOPMH
+                       join d in db.DANHSACHLOPs
+                       on a.IDNGUOIDUNG equals d.IDNGUOIDUNG
+                       where id == d.IDLOPMH
                        select a;
             return View(list);
         }
