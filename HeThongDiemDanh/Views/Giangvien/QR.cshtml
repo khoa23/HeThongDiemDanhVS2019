@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Diem Danh</title>
+</head>
+<body>
+    <center>
+        @if (ViewBag.QRCodeImage != null)
+        {
+            <img src="@ViewBag.QRCodeImage" alt="" style="height:686px;width:686px" />
+        }
+    </center>  
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HeThongDiemDanh.Models.NGUOIDUNG>
+@{
+    ViewBag.Title = "DanhSachLop";
+    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+}
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>MSSV</th>
+                <th>Họ tên</th>
+                <th>Ngày sinh</th>
+                <th>Email</th>
+                <th>SĐT</th>
+            </tr>
+        </thead>
+        <tbody>           
+           @foreach (var item in Model)
+            {
+                <tr>
+                    <td></td>
+                    <td>@Html.Raw(item.MASONGUOIDUNG) </td>
+                    <td>@Html.Raw(item.TENNGUOIDUNG) </td>
+                    <td>@Html.Raw(item.NGAYSINH) </td>
+                    <td>@Html.Raw(item.EMAIL) </td>
+                    <td>@Html.Raw(item.SODIENTHOAI) </td>
+                </tr>
+            }
+                
+         </tbody>
+         <tfoot>
+                <tr>
+                    <th>STT</th>
+                    <th>MSSV</th>
+                    <th>Họ tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Email</th>
+                    <th>SĐT</th>
+                </tr>
+         </tfoot>
+    </table>

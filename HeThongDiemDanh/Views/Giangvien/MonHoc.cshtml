@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HeThongDiemDanh.Models.MONHOC>
+@{
+    ViewBag.Title = "MonHoc";
+    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+}
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Mã môn học</th>
+            <th>Tên môn học</th>
+            <th>Số buổi</th>
+            <th>Số tín chỉ</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td></td>
+            <td>
+                <a href="/GiangVien/LopMonHoc-@item.IDMONHOC">
+                    <span>
+                        @Html.Raw(item.MAMONHOC)
+                    </span>
+                </a>
+            </td>
+            <td>
+                <a href="/GiangVien/LopMonHoc-@item.IDMONHOC">
+                    <span>
+                        @Html.Raw(item.TENMONHOC)
+                    </span>
+                </a>
+            </td>
+            <td>@Html.Raw(item.SOBUOI) </td>
+            <td>@Html.Raw(item.SOTINCHI) </td>
+        </tr>
+             }
+    </tbody>
+</table>
+
