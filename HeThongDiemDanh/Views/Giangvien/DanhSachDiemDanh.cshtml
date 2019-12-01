@@ -1,4 +1,5 @@
-﻿@model IEnumerable<HeThongDiemDanh.Models.NGUOIDUNG>
+﻿@model IEnumerable<HeThongDiemDanh.Models.DIEMDANHSV>
+
 @{
     ViewBag.Title = "DanhSachDiemDanh";
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
@@ -25,31 +26,32 @@
         {
             <tr>
                 <td></td>
-                <td>@Html.Raw(item.MASONGUOIDUNG) </td>
-                <td>@Html.Raw(item.TENNGUOIDUNG) </td>
+                <td>@Html.Raw(item.IDNGUOIDUNG) </td>
+                <td>@Html.Raw(item.IDNGUOIDUNG) </td>
                 <td>
-                    <input id="Checkbox1" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+
+                    <input @(Convert.ToBoolean(item.lan1) == true ? "checked='checked'" : string.Empty) type="checkbox" />
                 </td>
                 <td>
-                    <input id="Checkbox2" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                    <input @(Convert.ToBoolean(item.lan2) == true ? "checked='checked'" : string.Empty) type="checkbox" />
                 </td>
                 <td>
-                    <input id="Checkbox3" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                    <input @(Convert.ToBoolean(item.lan3) == true ? "checked='checked'" : string.Empty) type="checkbox" />
                 </td>
                 <td>
-                    <input id="Checkbox4" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                    <input @(Convert.ToBoolean(item.lan4) == true ? "checked='checked'" : string.Empty) type="checkbox" />
                 </td>
                 <td>
-                    <input id="Checkbox5" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                    <input @(Convert.ToBoolean(item.lan5) == true ? "checked='checked'" : string.Empty) type="checkbox" />
                 </td>
                 <td>
-                    <input id="Checkbox6" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                    <input @(Convert.ToBoolean(item.lan6) == true ? "checked='checked'" : string.Empty) type="checkbox" />
                 </td>
                 <td>
-                    <input id="Checkbox7" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                    <input @(Convert.ToBoolean(item.lan7) == true ? "checked='checked'" : string.Empty) type="checkbox" />
                 </td>
                 <td>
-                    <input id="Checkbox8" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+                    <input @(Convert.ToBoolean(item.lan8) == true ? "checked='checked'" : string.Empty) type="checkbox" />
                 </td>
             </tr>
         }

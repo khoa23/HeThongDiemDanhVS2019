@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HeThongDiemDanh.Models.NGUOIDUNG>
+﻿@model IEnumerable<HeThongDiemDanh.Models.diemdanh>
 @{
     ViewBag.Title = "DanhSachDiemDanh";
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
@@ -9,7 +9,7 @@
         <tr>
             <th>STT</th>
             <th>MSSV</th>
-            <th>Họ tên</th>
+            <th>0</th>
             <th>1</th>
             <th>2</th>
             <th>3</th>
@@ -23,35 +23,38 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td></td>
-                <td>@Html.Raw(item.MASONGUOIDUNG) </td>
-                <td>@Html.Raw(item.TENNGUOIDUNG) </td>
-                <td>
-                    <input id="Checkbox1" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
-                </td>
-                <td>
-                    <input id="Checkbox2" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
-                </td>
-                <td>
-                    <input id="Checkbox3" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
-                </td>
-                <td>
-                    <input id="Checkbox4" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
-                </td>
-                <td>
-                    <input id="Checkbox5" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
-                </td>
-                <td>
-                    <input id="Checkbox6" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
-                </td>
-                <td>
-                    <input id="Checkbox7" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
-                </td>
-                <td>
-                    <input id="Checkbox8" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
-                </td>
-            </tr>
+        <tr>
+            <td></td>
+            <td>@Html.Raw(item.id) </td>
+            <td>
+                <input @(Convert.ToBoolean(item.cot1) == true ? "checked='checked'" : string.Empty) type="checkbox" />
+            </td>
+            <td>
+                <input @(Convert.ToBoolean(item.cot2) == true ? "checked='checked'" : string.Empty) type="checkbox" />
+            </td>
+            <td>
+                <input @(Convert.ToBoolean(item.cot3) == true ? "checked='checked'" : string.Empty) type="checkbox" />
+            </td>
+            <td>
+                <input id="Checkbox2" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+            </td>
+            <td>
+                <input id="Checkbox3" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+            </td>
+            <td>
+                <input id="Checkbox4" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+            </td>
+            <td>
+                <input id="Checkbox5" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+            </td>
+            <td>
+                <input id="Checkbox6" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+            </td>
+            <td>
+                <input id="Checkbox7" type="checkbox" runat="server" class="checkboxes select-checkbox" value="test" />
+            </td>
+
+        </tr>
         }
     </tbody>
 </table>

@@ -35,6 +35,14 @@
           <Property Name="IDLICHHOC" Type="int" Nullable="false" />
           <Property Name="IDLOPMH" Type="int" Nullable="false" />
           <Property Name="IDNGUOIDUNG" Type="int" Nullable="false" />
+          <Property Name="lan1" Type="bit" />
+          <Property Name="lan2" Type="bit" />
+          <Property Name="lan3" Type="bit" />
+          <Property Name="lan4" Type="bit" />
+          <Property Name="lan5" Type="bit" />
+          <Property Name="lan6" Type="bit" />
+          <Property Name="lan7" Type="bit" />
+          <Property Name="lan8" Type="bit" />
         </EntityType>
         <EntityType Name="HOCKY">
           <Key>
@@ -54,7 +62,7 @@
           <Property Name="IDLICHHOC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="THOIGIANDIEMDANH" Type="datetime" Nullable="false" />
           <Property Name="TUANHOC" Type="int" Nullable="false" />
-          <Property Name="MAQR" Type="text" Nullable="false" />
+          <Property Name="MAQR" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IDLOPMH" Type="int" Nullable="false" />
           <Property Name="IDNGUOIDUNG" Type="int" Nullable="false" />
         </EntityType>
@@ -101,7 +109,7 @@
           </Key>
           <Property Name="IDNAMHOC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MANAMHOC" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="TENNAMHOC" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="TENNAMHOC" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="NGUOIDUNG">
           <Key>
@@ -399,6 +407,14 @@
           <Property Name="IDLICHHOC" Type="Int32" Nullable="false" />
           <Property Name="IDLOPMH" Type="Int32" Nullable="false" />
           <Property Name="IDNGUOIDUNG" Type="Int32" Nullable="false" />
+          <Property Name="lan1" Type="Boolean" />
+          <Property Name="lan2" Type="Boolean" />
+          <Property Name="lan3" Type="Boolean" />
+          <Property Name="lan4" Type="Boolean" />
+          <Property Name="lan5" Type="Boolean" />
+          <Property Name="lan6" Type="Boolean" />
+          <Property Name="lan7" Type="Boolean" />
+          <Property Name="lan8" Type="Boolean" />
           <NavigationProperty Name="LICHHOC" Relationship="Self.FK__DIEMDANHSV__2F10007B" FromRole="DIEMDANHSV" ToRole="LICHHOC" />
         </EntityType>
         <EntityType Name="HOCKY">
@@ -421,7 +437,7 @@
           <Property Name="IDLICHHOC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="THOIGIANDIEMDANH" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TUANHOC" Type="Int32" Nullable="false" />
-          <Property Name="MAQR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAQR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDLOPMH" Type="Int32" Nullable="false" />
           <Property Name="IDNGUOIDUNG" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DANHSACHLOP" Relationship="Self.FK__LICHHOC__2D27B809" FromRole="LICHHOC" ToRole="DANHSACHLOP" />
@@ -476,7 +492,7 @@
           </Key>
           <Property Name="IDNAMHOC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MANAMHOC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TENNAMHOC" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENNAMHOC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="HOCKies" Relationship="Self.FK__HOCKY__IDNAMHOC__2A4B4B5E" FromRole="NAMHOC" ToRole="HOCKY" />
         </EntityType>
         <EntityType Name="NGUOIDUNG">
@@ -774,6 +790,14 @@
                 <ScalarProperty Name="IDLICHHOC" ColumnName="IDLICHHOC" />
                 <ScalarProperty Name="IDLOPMH" ColumnName="IDLOPMH" />
                 <ScalarProperty Name="IDNGUOIDUNG" ColumnName="IDNGUOIDUNG" />
+                <ScalarProperty Name="lan1" ColumnName="lan1" />
+                <ScalarProperty Name="lan2" ColumnName="lan2" />
+                <ScalarProperty Name="lan3" ColumnName="lan3" />
+                <ScalarProperty Name="lan4" ColumnName="lan4" />
+                <ScalarProperty Name="lan5" ColumnName="lan5" />
+                <ScalarProperty Name="lan6" ColumnName="lan6" />
+                <ScalarProperty Name="lan7" ColumnName="lan7" />
+                <ScalarProperty Name="lan8" ColumnName="lan8" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -20,6 +20,14 @@ namespace HeThongDiemDanh.Models
         public int IDLICHHOC { get; set; }
         public int IDLOPMH { get; set; }
         public int IDNGUOIDUNG { get; set; }
+        public Nullable<bool> lan1 { get; set; }
+        public Nullable<bool> lan2 { get; set; }
+        public Nullable<bool> lan3 { get; set; }
+        public Nullable<bool> lan4 { get; set; }
+        public Nullable<bool> lan5 { get; set; }
+        public Nullable<bool> lan6 { get; set; }
+        public Nullable<bool> lan7 { get; set; }
+        public Nullable<bool> lan8 { get; set; }
     
         public virtual LICHHOC LICHHOC { get; set; }
     }

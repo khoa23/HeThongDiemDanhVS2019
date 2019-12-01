@@ -148,62 +148,80 @@
     </Compile>
     <Compile Include="Helper\Gmail.cs" />
     <Compile Include="Models\CHITIETQUYENNGUOIDUNG.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DANHSACHLOP.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DatabaseDDSVEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDDSVEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DatabaseDDSVEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DatabaseDDSVEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDDSVEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\diemdanh.cs">
+      <DependentUpon>Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DIEMDANHSV.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HOCKY.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LICHHOC.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LOPMONHOC.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LOPSINHVIEN.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MetadataClass.cs" />
     <Compile Include="Models\MONHOC.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NAMHOC.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NGUOIDUNG.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PHANQUYEN.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QRCodeModel.cs" />
     <Compile Include="Models\QUYENNGUOIDUNG.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Models\SiteRole.cs" />
-    <Compile Include="Models\SQL.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SQL.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SQL.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SQL.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SQL.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>SQL.tt</DependentUpon>
+      <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Test.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Test.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Test.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -3083,15 +3101,25 @@
     <Content Include="Login\html\vendors\bower_components\x-editable\dist\jquery-editable\img\clear.png" />
     <Content Include="Login\html\vendors\bower_components\x-editable\dist\jquery-editable\img\loading.gif" />
     <Content Include="Login\html\vendors\bower_components\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\animated-overlay.gif" />
-    <Content Include="Models\SQL.Context.tt">
+    <Content Include="Models\DatabaseDDSVEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SQL.edmx</DependentUpon>
-      <LastGenOutput>SQL.Context.cs</LastGenOutput>
+      <DependentUpon>DatabaseDDSVEntities.edmx</DependentUpon>
+      <LastGenOutput>DatabaseDDSVEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\SQL.tt">
+    <Content Include="Models\DatabaseDDSVEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SQL.edmx</DependentUpon>
-      <LastGenOutput>SQL.cs</LastGenOutput>
+      <DependentUpon>DatabaseDDSVEntities.edmx</DependentUpon>
+      <LastGenOutput>DatabaseDDSVEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Test.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Test.edmx</DependentUpon>
+      <LastGenOutput>Test.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Test.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Test.edmx</DependentUpon>
+      <LastGenOutput>Test.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -4336,14 +4364,21 @@
     <Content Include="Login\html\vendors\bower_components\x-editable\.bower.json" />
     <Content Include="Login\html\vendors\bower_components\x-editable\.gitignore" />
     <Content Include="Login\html\vendors\bower_components\x-editable\bower.json" />
-    <EntityDeploy Include="Models\SQL.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SQL.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\SQL.edmx.diagram">
-      <DependentUpon>SQL.edmx</DependentUpon>
-    </Content>
     <Content Include=".editorconfig" />
+    <EntityDeploy Include="Models\Test.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Test.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Test.edmx.diagram">
+      <DependentUpon>Test.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\DatabaseDDSVEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DatabaseDDSVEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DatabaseDDSVEntities.edmx.diagram">
+      <DependentUpon>DatabaseDDSVEntities.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

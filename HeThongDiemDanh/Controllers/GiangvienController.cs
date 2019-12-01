@@ -2,12 +2,15 @@
 using QRCoder;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using ZXing;
 
 
@@ -168,37 +171,42 @@ namespace HeThongDiemDanh.Controllers
 
             }
 
-            //select n.MASONGUOIDUNG,TENNGUOIDUNG
-            //from NGUOIDUNG n, DANHSACHLOP d, DIEMDANHSV dd
-            //where n.IDNGUOIDUNG = dd.IDNGUOIDUNG and d.IDLOPMH = dd.IDLOPMH
-            //GROUP BY n.MASONGUOIDUNG,TENNGUOIDUNG
-
-            //var list = from n in db.NGUOIDUNGs
-            //           join d in db.DIEMDANHSVs
-            //           on n.IDNGUOIDUNG equals d.IDNGUOIDUNG
+            //var list = from a in db.NGUOIDUNGs
+            //           join d in db.DANHSACHLOPs
+            //           on a.IDNGUOIDUNG equals d.IDNGUOIDUNG
             //           where id == d.IDLOPMH
-            //           select n;
+            //           select a;
 
-            var list = from a in db.NGUOIDUNGs
-                       join d in db.DANHSACHLOPs
-                       on a.IDNGUOIDUNG equals d.IDNGUOIDUNG
-                       where id == d.IDLOPMH
-                       select a;
+            //select n.MASONGUOIDUNG, TENNGUOIDUNG, d.lan1, lan2, lan3, lan4, lan5
+            //from NGUOIDUNG n, DIEMDANHSV d
+            //where n.IDNGUOIDUNG = n.IDNGUOIDUNG
+
+            //var list = from d in db.DIEMDANHSVs
+            //           join n in db.NGUOIDUNGs
+            //           on d.IDNGUOIDUNG equals n.IDNGUOIDUNG
+            //           where id == d.IDLOPMH
+            //           select new { n.MASONGUOIDUNG,
+            //                        n.TENNGUOIDUNG,
+            //                        d.lan1,
+            //                        d.lan2,
+            //                       d.lan3,
+            //                       d.lan4,
+            //                       d.lan5,
+            //                       d.lan6,
+            //                       d.lan7,
+            //                       d.lan8
+            //                    };
+
+            var list = from s in db.DIEMDANHSVs select s;
             return View(list);
         }
-        public ActionResult test(int? id)
-        {
-            if (id == null)
-            {
-                return HttpNotFound();
-
-            }
-            var list = from n in db.NGUOIDUNGs
-                       join d in db.DIEMDANHSVs
-                       on n.IDNGUOIDUNG equals d.IDNGUOIDUNG
-                       where id == d.IDLOPMH
-                       select n;
+        TestEntities db1 = new TestEntities();
+        public ActionResult test()
+        {         
+          var list = from s in db1.diemdanhs select s;
+           
             return View(list);
         }
+        
     }
 }
