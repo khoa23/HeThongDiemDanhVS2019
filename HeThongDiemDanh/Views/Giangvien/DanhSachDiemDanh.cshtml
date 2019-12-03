@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<HeThongDiemDanh.Models.DIEMDANHSV>
-
 @{
     ViewBag.Title = "DanhSachDiemDanh";
+
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
 }
 
@@ -26,8 +26,11 @@
         {
             <tr>
                 <td></td>
-                <td>@Html.Raw(item.IDNGUOIDUNG) </td>
-                <td>@Html.Raw(item.IDNGUOIDUNG) </td>
+                <td>
+                    @Html.Raw(item.IDNGUOIDUNG)
+
+                </td>
+                <td>@Html.Raw(item.IDNGUOIDUNG)</td>
                 <td>
 
                     <input @(Convert.ToBoolean(item.lan1) == true ? "checked='checked'" : string.Empty) type="checkbox" />

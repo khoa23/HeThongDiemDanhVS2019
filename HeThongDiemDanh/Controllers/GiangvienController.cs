@@ -171,34 +171,21 @@ namespace HeThongDiemDanh.Controllers
 
             }
 
-            //var list = from a in db.NGUOIDUNGs
-            //           join d in db.DANHSACHLOPs
-            //           on a.IDNGUOIDUNG equals d.IDNGUOIDUNG
-            //           where id == d.IDLOPMH
-            //           select a;
 
+
+            var list = from n in db.NGUOIDUNGs
+                        //join ds in db.DANHSACHLOPs on n.IDNGUOIDUNG equals ds.IDNGUOIDUNG
+                        //join l in db.LICHHOCs on ds.IDLOPMH equals l.IDLOPMH
+                        join dd in db.DIEMDANHSVs on n.IDNGUOIDUNG equals dd.IDNGUOIDUNG
+                        
+                        where id == dd.IDLOPMH
+                        select n;
+
+            //var list = from s in db.DIEMDANHSVs select s;
+            return View(list);
             //select n.MASONGUOIDUNG, TENNGUOIDUNG, d.lan1, lan2, lan3, lan4, lan5
             //from NGUOIDUNG n, DIEMDANHSV d
             //where n.IDNGUOIDUNG = n.IDNGUOIDUNG
-
-            //var list = from d in db.DIEMDANHSVs
-            //           join n in db.NGUOIDUNGs
-            //           on d.IDNGUOIDUNG equals n.IDNGUOIDUNG
-            //           where id == d.IDLOPMH
-            //           select new { n.MASONGUOIDUNG,
-            //                        n.TENNGUOIDUNG,
-            //                        d.lan1,
-            //                        d.lan2,
-            //                       d.lan3,
-            //                       d.lan4,
-            //                       d.lan5,
-            //                       d.lan6,
-            //                       d.lan7,
-            //                       d.lan8
-            //                    };
-
-            var list = from s in db.DIEMDANHSVs select s;
-            return View(list);
         }
         TestEntities db1 = new TestEntities();
         public ActionResult test()
