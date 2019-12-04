@@ -170,30 +170,30 @@ namespace HeThongDiemDanh.Controllers
                 return HttpNotFound();
 
             }
-
+            List<NGUOIDUNG> nguoidung = db.NGUOIDUNGs.ToList();
+            List<DIEMDANHSV> diemdanhsv = db.DIEMDANHSVs.ToList();
 
 
             var list = from n in db.NGUOIDUNGs
-                        //join ds in db.DANHSACHLOPs on n.IDNGUOIDUNG equals ds.IDNGUOIDUNG
-                        //join l in db.LICHHOCs on ds.IDLOPMH equals l.IDLOPMH
-                        join dd in db.DIEMDANHSVs on n.IDNGUOIDUNG equals dd.IDNGUOIDUNG
-                        
-                        where id == dd.IDLOPMH
-                        select n;
-
-            //var list = from s in db.DIEMDANHSVs select s;
+                           //join ds in db.DANHSACHLOPs on n.IDNGUOIDUNG equals ds.IDNGUOIDUNG
+                           //join l in db.LICHHOCs on ds.IDLOPMH equals l.IDLOPMH
+                       join dd in db.DIEMDANHSVs on n.IDNGUOIDUNG equals dd.IDNGUOIDUNG into table1
+                       from dd in table1.ToList()
+                       where id == dd.IDLOPMH
+                       select new DanhSachDiemDanh
+                       { nguoidung = n, diemdanhsv = dd };
             return View(list);
             //select n.MASONGUOIDUNG, TENNGUOIDUNG, d.lan1, lan2, lan3, lan4, lan5
             //from NGUOIDUNG n, DIEMDANHSV d
             //where n.IDNGUOIDUNG = n.IDNGUOIDUNG
         }
-        TestEntities db1 = new TestEntities();
-        public ActionResult test()
-        {         
-          var list = from s in db1.diemdanhs select s;
+        //TestEntities db1 = new TestEntities();
+        //public ActionResult test()
+        //{         
+        //  var list = from s in db1.diemdanhs select s;
            
-            return View(list);
-        }
+        //    return View(list);
+        //}
         
     }
 }
