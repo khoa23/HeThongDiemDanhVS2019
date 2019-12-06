@@ -31,6 +31,21 @@ namespace HeThongDiemDanh.Controllers
         {
             var list = from s in db.NAMHOCs select s;
             return View(list);
+
+            //List<NAMHOC> namhoc = db.NAMHOCs.ToList();
+            //List<HOCKY> hocky = db.HOCKies.ToList();
+            //int id = Convert.ToInt32(Session["IDNGUOIDUNG"]);
+
+
+            //var list = from n in db.NAMHOCs
+            //           join dd in db.HOCKies on n.IDNAMHOC equals dd.IDNAMHOC into table1
+            //           from dd in table1.ToList()
+            //           join l in db.LOPMONHOCs on dd.IDHOCKY equals l.IDHOCKY into table2
+            //           from l in table2.ToList()
+            //           where id == l.IDGIANGVIEN
+            //           select new NamHocHocKy
+            //           { namhoc = n, hocky = dd };
+            return View(list);
         }
 
         public ActionResult HocKy(int? id)
@@ -175,25 +190,13 @@ namespace HeThongDiemDanh.Controllers
 
 
             var list = from n in db.NGUOIDUNGs
-                           //join ds in db.DANHSACHLOPs on n.IDNGUOIDUNG equals ds.IDNGUOIDUNG
-                           //join l in db.LICHHOCs on ds.IDLOPMH equals l.IDLOPMH
                        join dd in db.DIEMDANHSVs on n.IDNGUOIDUNG equals dd.IDNGUOIDUNG into table1
                        from dd in table1.ToList()
                        where id == dd.IDLOPMH
                        select new DanhSachDiemDanh
                        { nguoidung = n, diemdanhsv = dd };
             return View(list);
-            //select n.MASONGUOIDUNG, TENNGUOIDUNG, d.lan1, lan2, lan3, lan4, lan5
-            //from NGUOIDUNG n, DIEMDANHSV d
-            //where n.IDNGUOIDUNG = n.IDNGUOIDUNG
         }
-        //TestEntities db1 = new TestEntities();
-        //public ActionResult test()
-        //{         
-        //  var list = from s in db1.diemdanhs select s;
-           
-        //    return View(list);
-        //}
         
     }
 }

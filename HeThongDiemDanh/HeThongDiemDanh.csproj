@@ -169,9 +169,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseDDSVEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\diemdanh.cs">
-      <DependentUpon>Test.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DIEMDANHSV.cs">
       <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
@@ -194,6 +191,7 @@
     <Compile Include="Models\NAMHOC.cs">
       <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NamHocHocKy.cs" />
     <Compile Include="Models\NGUOIDUNG.cs">
       <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
     </Compile>
@@ -208,21 +206,6 @@
     <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>DatabaseDDSVEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Test.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Test.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Test.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Test.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Test.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -3112,16 +3095,6 @@
       <DependentUpon>DatabaseDDSVEntities.edmx</DependentUpon>
       <LastGenOutput>DatabaseDDSVEntities.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Test.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Test.edmx</DependentUpon>
-      <LastGenOutput>Test.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Test.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Test.edmx</DependentUpon>
-      <LastGenOutput>Test.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Login\html\img\country\01-flag.zip" />
@@ -4366,13 +4339,6 @@
     <Content Include="Login\html\vendors\bower_components\x-editable\.gitignore" />
     <Content Include="Login\html\vendors\bower_components\x-editable\bower.json" />
     <Content Include=".editorconfig" />
-    <EntityDeploy Include="Models\Test.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Test.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Test.edmx.diagram">
-      <DependentUpon>Test.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\DatabaseDDSVEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DatabaseDDSVEntities.Designer.cs</LastGenOutput>
